@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.String?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.CheckBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ProgressIndicator?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.control.ToggleButton?>
+<?import javafx.scene.control.ToggleGroup?>
+<?import javafx.scene.layout.FlowPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Region?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+<?import org.kordamp.ikonli.javafx.FontIcon?>
+
+<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="700.0" prefWidth="1320.0" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.pdfx.pdf.split.SplitPdfController">
+    <children>
+        <HBox prefHeight="100.0" prefWidth="200.0">
+            <children>
+                <Region prefHeight="200.0" prefWidth="200.0" HBox.hgrow="ALWAYS" />
+                <Label maxHeight="1.7976931348623157E308" text="Split and Extract Pages" wrapText="true" HBox.hgrow="ALWAYS">
+                    <font>
+                        <Font name="System Bold" size="24.0" />
+                    </font>
+                    <HBox.margin>
+                        <Insets />
+                    </HBox.margin>
+                </Label>
+                <Region prefHeight="200.0" prefWidth="200.0" HBox.hgrow="ALWAYS" />
+            </children>
+        </HBox>
+        <HBox prefHeight="35.0" prefWidth="1280.0">
+            <children>
+                <ToggleButton fx:id="extractToggleButton" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#handleToggleSelection" selected="true" text="Extract" toggleGroup="$ExSp">
+                    <HBox.margin>
+                        <Insets left="50.0" />
+                    </HBox.margin>
+                    <toggleGroup>
+                        <ToggleGroup fx:id="ExSp" />
+                    </toggleGroup>
+               <graphic>
+                  <FontIcon />
+               </graphic>
+                </ToggleButton>
+                <ToggleButton fx:id="splitToggleButton" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#handleToggleSelection" prefHeight="36.0" prefWidth="66.0" text="Split" toggleGroup="$ExSp">
+               <graphic>
+                  <FontIcon />
+               </graphic></ToggleButton>
+                <Region prefWidth="100.0" />
+                <CheckBox fx:id="extractAllCheckbox" maxHeight="1.7976931348623157E308" mnemonicParsing="false" text="Extract All" />
+                <ProgressIndicator fx:id="thumbnailProgressIndicator" prefHeight="36.0" prefWidth="36.0">
+                    <HBox.margin>
+                        <Insets left="20.0" />
+                    </HBox.margin>
+                </ProgressIndicator>
+                <Region HBox.hgrow="SOMETIMES" />
+                <Button maxHeight="1.7976931348623157E308" mnemonicParsing="false" onAction="#handleSplitButtonClick" styleClass="accent" text="Apply">
+                    <HBox.margin>
+                        <Insets right="15.0" />
+                    </HBox.margin>
+               <graphic>
+                  <FontIcon iconLiteral="fltral-document-landscape-split-hint-20" />
+               </graphic>
+                </Button>
+                <Button maxHeight="1.7976931348623157E308" mnemonicParsing="false" onAction="#handleBackButtonClick" prefWidth="85.0" text="Back">
+                    <HBox.margin>
+                        <Insets right="30.0" />
+                    </HBox.margin>
+               <styleClass>
+                  <String fx:value="accent" />
+                  <String fx:value="button-outlined" />
+               </styleClass>
+               <graphic>
+                  <FontIcon iconLiteral="fltral-arrow-left-24" />
+               </graphic>
+                </Button>
+            </children>
+        </HBox>
+        <HBox prefHeight="40.0" prefWidth="1280.0" />
+        <HBox prefHeight="100.0" prefWidth="200.0" VBox.vgrow="ALWAYS">
+            <children>
+                <ScrollPane fitToHeight="true" fitToWidth="true" prefHeight="200.0" prefWidth="200.0" HBox.hgrow="ALWAYS">
+                    <content>
+                        <FlowPane fx:id="flowPane" hgap="15.0" prefHeight="200.0" prefWidth="200.0" vgap="20.0">
+                     <padding>
+                        <Insets left="20.0" />
+                     </padding></FlowPane>
+                    </content>
+                </ScrollPane>
+            </children>
+        </HBox>
+    </children>
+</VBox>

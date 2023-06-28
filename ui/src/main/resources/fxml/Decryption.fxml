@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.String?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.DialogPane?>
+<?import javafx.scene.control.PasswordField?>
+<?import javafx.scene.layout.HBox?>
+<?import org.kordamp.ikonli.javafx.FontIcon?>
+
+<DialogPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="60.0" prefWidth="440.0" stylesheets="@css/NoPaddingDialogPane.css" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.pdfx.pdf.decrypt.DecryptionController">
+   <content>
+      <HBox>
+         <children>
+            <PasswordField fx:id="ownerPasswordField" prefWidth="249.0" promptText="Enter owner password" />
+            <Button fx:id="decryptButton" mnemonicParsing="false" onAction="#handleDecryptButton" text="Decrypt">
+               <HBox.margin>
+                  <Insets left="40.0" />
+               </HBox.margin>
+               <graphic>
+                  <FontIcon iconLiteral="fltrmz-unlock-24" />
+               </graphic>
+               <styleClass>
+                  <String fx:value="accent" />
+                  <String fx:value="button-outlined" />
+               </styleClass>
+            </Button>
+         </children>
+      </HBox>
+   </content>
+</DialogPane>

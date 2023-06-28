@@ -1,0 +1,318 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.String?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.Cursor?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.control.Tooltip?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.FlowPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Region?>
+<?import javafx.scene.layout.StackPane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+<?import org.kordamp.ikonli.javafx.FontIcon?>
+
+<StackPane xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.pdfx.home.HomePageController">
+   <children>
+      <BorderPane fx:id="borderPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="800.0" prefWidth="1280.0" stylesheets="@css/HomepageStyle.css">
+          <right>
+
+    </right>
+          <right>
+              <ScrollPane fx:id="scrollPane" fitToHeight="true" fitToWidth="true" hbarPolicy="NEVER" pannable="true" prefWidth="338.0" style="-fx-border-color: white transparent transparent white; -fx-border-style: hidden hidden hidden solid;" stylesheets="@css/ProgressVboxStyle.css" BorderPane.alignment="CENTER" />
+          </right>
+          <center>
+              <VBox BorderPane.alignment="CENTER">
+                  <children>
+                      <ScrollPane fitToHeight="true" fitToWidth="true" prefHeight="200.0" prefWidth="200.0" VBox.vgrow="ALWAYS">
+                          <content>
+                              <VBox>
+                                  <children>
+                                      <HBox fillHeight="false" minHeight="225.0">
+                                          <children>
+                                              <Region maxHeight="1.7976931348623157E308" HBox.hgrow="ALWAYS" />
+                                              <HBox id="select-files-pane" fx:id="dragDropPane" onDragOver="#handleDragDrop">
+                                                  <children>
+                                                      <VBox prefHeight="216.0" prefWidth="467.0">
+                                                          <children>
+                                                              <HBox prefHeight="107.0" prefWidth="460.0">
+                                                                  <children>
+                                                                      <AnchorPane prefHeight="50.0" prefWidth="470.0" HBox.hgrow="ALWAYS">
+                                                                          <children>
+                                                                              <ImageView cache="true" fitHeight="61.0" fitWidth="60.0" layoutX="201.0" layoutY="10.0" pickOnBounds="true" preserveRatio="true">
+                                                                                  <image>
+                                                                                      <Image url="@images/select-pdf_128px.png" />
+                                                                                  </image>
+                                                                              </ImageView>
+                                                                          </children>
+                                                                      </AnchorPane>
+                                                                  </children>
+                                                              </HBox>
+                                                              <HBox prefHeight="111.0" prefWidth="467.0">
+                                                                  <children>
+                                                                      <AnchorPane prefHeight="200.0" prefWidth="393.0" HBox.hgrow="ALWAYS">
+                                                                          <children>
+                                                                              <Label layoutX="166.0" layoutY="14.0" prefHeight="20.0" prefWidth="135.0" text="Drag your files here" textFill="WHITE">
+                                                                                  <font>
+                                                                                      <Font name="System Bold" size="14.0" />
+                                                                                  </font>
+                                                                                  <tooltip>
+                                                                                      <Tooltip text="Files are processed according to the tab you are on" />
+                                                                                  </tooltip>
+                                                                              </Label>
+                                                                              <Label layoutX="130.0" layoutY="43.0" prefHeight="20.0" prefWidth="207.0" text="or manually select them below" textFill="WHITE">
+                                                                                  <font>
+                                                                                      <Font name="System Bold" size="14.0" />
+                                                                                  </font>
+                                                                                  <tooltip>
+                                                                                      <Tooltip text="Files are processed according to the tab you are on" />
+                                                                                  </tooltip>
+                                                                              </Label>
+                                                                          </children>
+                                                                      </AnchorPane>
+                                                                  </children>
+                                                              </HBox>
+                                                              <HBox prefHeight="90.0" prefWidth="467.0">
+                                                                  <children>
+                                                                      <AnchorPane prefHeight="200.0" prefWidth="200.0" HBox.hgrow="ALWAYS">
+                                                                          <children>
+                                                                              <Button layoutX="179.0" layoutY="7.0" mnemonicParsing="false" onAction="#handleSelectFilesButtonClick" prefHeight="32.0" prefWidth="130.0" text="Browse Files">
+                                                                                  <styleClass>
+                                                                                      <String fx:value="accent" />
+                                                                                      <String fx:value="rounded" />
+                                                                                  </styleClass>
+                                                               <graphic>
+                                                                  <FontIcon iconLiteral="fltral-document-add-24" />
+                                                               </graphic>
+                                                                              </Button>
+                                                                          </children>
+                                                                      </AnchorPane>
+                                                                  </children>
+                                                              </HBox>
+                                                          </children>
+                                                      </VBox>
+                                                  </children>
+                                                  <HBox.margin>
+                                                      <Insets top="15.0" />
+                                                  </HBox.margin>
+                                              </HBox>
+                                              <Region HBox.hgrow="ALWAYS" />
+                                          </children>
+                                          <VBox.margin>
+                                              <Insets />
+                                          </VBox.margin>
+                                      </HBox>
+                              <HBox VBox.vgrow="ALWAYS">
+                                 <children>
+                                            <FlowPane hgap="50.0" prefHeight="200.0" prefWidth="200.0" vgap="25.0" HBox.hgrow="ALWAYS">
+                                                <children>
+                                                    <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onMouseClicked="#handleSplitPdfCardClick" prefHeight="159.0" prefWidth="259.0" styleClass="pdf-tools-cards">
+                                                        <children>
+                                                            <ImageView cache="true" fitHeight="45.0" fitWidth="48.0" layoutX="21.0" layoutY="25.0" pickOnBounds="true" preserveRatio="true" AnchorPane.leftAnchor="16.0">
+                                                                <image>
+                                                                    <Image url="@images/split_64px.png" />
+                                                                </image>
+                                                            </ImageView>
+                                                            <Label layoutX="88.0" layoutY="40.0" text="Split" textFill="WHITE">
+                                                                <font>
+                                                                    <Font name="Segoe UI Bold" size="16.0" />
+                                                                </font>
+                                                            </Label>
+                                                            <Label layoutX="64.0" layoutY="86.0" prefHeight="41.0" prefWidth="154.0" text="Split or Extract range of Pdf Documents" textFill="WHITE" wrapText="true">
+                                                                <font>
+                                                                    <Font size="14.0" />
+                                                                </font>
+                                                            </Label>
+                                                        </children>
+                                                        <cursor>
+                                                            <Cursor fx:constant="HAND" />
+                                                        </cursor>
+                                                    </AnchorPane>
+                                                    <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onMouseClicked="#handleMetadataCardClick" prefHeight="159.0" prefWidth="259.0" styleClass="pdf-tools-cards">
+                                                        <children>
+                                                            <ImageView cache="true" fitHeight="48.0" fitWidth="48.0" layoutX="21.0" layoutY="25.0" pickOnBounds="true" preserveRatio="true" AnchorPane.leftAnchor="16.0">
+                                                                <image>
+                                                                    <Image url="@images/file-info_64px.png" />
+                                                                </image>
+                                                            </ImageView>
+                                                            <Label layoutX="87.0" layoutY="28.0" prefHeight="44.0" prefWidth="146.0" text="View and Edit Metadata" textFill="WHITE" wrapText="true">
+                                                                <font>
+                                                                    <Font name="Segoe UI Bold" size="16.0" />
+                                                                </font>
+                                                            </Label>
+                                                            <Label layoutX="64.0" layoutY="86.0" prefHeight="62.0" prefWidth="155.0" text="Includes author, subject, date, pages, etc" textFill="WHITE" wrapText="true">
+                                                                <font>
+                                                                    <Font size="14.0" />
+                                                                </font>
+                                                            </Label>
+                                                        </children>
+                                                        <cursor>
+                                                            <Cursor fx:constant="HAND" />
+                                                        </cursor>
+                                                    </AnchorPane>
+                                                    <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onMouseClicked="#handleExtractTextCardClick" prefHeight="159.0" prefWidth="259.0" styleClass="pdf-tools-cards">
+                                                        <children>
+                                                            <ImageView cache="true" fitHeight="48.0" fitWidth="48.0" layoutX="21.0" layoutY="25.0" pickOnBounds="true" preserveRatio="true" AnchorPane.leftAnchor="16.0">
+                                                                <image>
+                                                                    <Image url="@images/text_64px.png" />
+                                                                </image>
+                                                            </ImageView>
+                                                            <Label layoutX="88.0" layoutY="29.0" prefHeight="41.0" prefWidth="114.0" text="Extract Text" textFill="WHITE" wrapText="true">
+                                                                <font>
+                                                                    <Font name="Segoe UI Bold" size="16.0" />
+                                                                </font>
+                                                            </Label>
+                                                            <Label layoutX="64.0" layoutY="86.0" prefHeight="41.0" prefWidth="133.0" text="Extract text from Pdf Documents" textFill="WHITE" wrapText="true">
+                                                                <font>
+                                                                    <Font size="14.0" />
+                                                                </font>
+                                                            </Label>
+                                                        </children>
+                                                    </AnchorPane>
+                                                    <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onMouseClicked="#handleMergePdfCardClick" prefHeight="159.0" prefWidth="259.0" styleClass="pdf-tools-cards">
+                                                        <children>
+                                                            <ImageView cache="true" fitHeight="48.0" fitWidth="48.0" layoutX="21.0" layoutY="25.0" pickOnBounds="true" preserveRatio="true" AnchorPane.leftAnchor="16.0">
+                                                                <image>
+                                                                    <Image url="@images/merge-pdf_64px.png" />
+                                                                </image>
+                                                            </ImageView>
+                                                            <Label layoutX="89.0" layoutY="28.0" prefHeight="43.0" prefWidth="144.0" text="Merge" textFill="WHITE" wrapText="true">
+                                                                <font>
+                                                                    <Font name="Segoe UI Bold" size="16.0" />
+                                                                </font>
+                                                            </Label>
+                                                            <Label layoutX="64.0" layoutY="86.0" prefHeight="41.0" prefWidth="149.0" text="Merge two or more Pdf Documents" textFill="WHITE" wrapText="true">
+                                                                <font>
+                                                                    <Font size="14.0" />
+                                                                </font>
+                                                            </Label>
+                                                        </children>
+                                                        <cursor>
+                                                            <Cursor fx:constant="HAND" />
+                                                        </cursor>
+                                                    </AnchorPane>
+                                                    <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onMouseClicked="#handleCompressCardClick" prefHeight="159.0" prefWidth="259.0" styleClass="pdf-tools-cards">
+                                                        <children>
+                                                            <ImageView cache="true" fitHeight="48.0" fitWidth="48.0" layoutX="21.0" layoutY="25.0" pickOnBounds="true" preserveRatio="true" AnchorPane.leftAnchor="16.0">
+                                                                <image>
+                                                                    <Image url="@images/zip_64px.png" />
+                                                                </image>
+                                                            </ImageView>
+                                                            <Label layoutX="88.0" layoutY="29.0" prefHeight="40.0" prefWidth="119.0" text="Zip" textFill="WHITE" wrapText="true">
+                                                                <font>
+                                                                    <Font name="Segoe UI Bold" size="16.0" />
+                                                                </font>
+                                                            </Label>
+                                                            <Label layoutX="64.0" layoutY="86.0" prefHeight="41.0" prefWidth="148.0" text="Compress Pdf Files in a .zip format" textFill="WHITE" wrapText="true">
+                                                                <font>
+                                                                    <Font size="14.0" />
+                                                                </font>
+                                                            </Label>
+                                                        </children>
+                                                        <cursor>
+                                                            <Cursor fx:constant="HAND" />
+                                                        </cursor>
+                                                    </AnchorPane>
+                                                    <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onMouseClicked="#handlePdfToImageCardClick" prefHeight="159.0" prefWidth="259.0" styleClass="pdf-tools-cards">
+                                                        <children>
+                                                            <ImageView cache="true" fitHeight="48.0" fitWidth="48.0" layoutX="21.0" layoutY="25.0" pickOnBounds="true" preserveRatio="true" AnchorPane.leftAnchor="16.0">
+                                                                <image>
+                                                                    <Image url="@images/pdf-to-image_64px.png" />
+                                                                </image>
+                                                            </ImageView>
+                                                            <Label layoutX="89.0" layoutY="28.0" prefHeight="46.0" prefWidth="113.0" text="Convert to Image" textFill="WHITE" wrapText="true">
+                                                                <font>
+                                                                    <Font name="Segoe UI Bold" size="16.0" />
+                                                                </font>
+                                                            </Label>
+                                                            <Label layoutX="64.0" layoutY="86.0" prefHeight="41.0" prefWidth="130.0" text="Convert Pdf into Jpg Jpeg &amp; Png formats" textFill="WHITE" wrapText="true">
+                                                                <font>
+                                                                    <Font size="14.0" />
+                                                                </font>
+                                                            </Label>
+                                                        </children>
+                                                    </AnchorPane>
+                                          <AnchorPane layoutX="653.0" layoutY="219.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onMouseClicked="#handleEncryptionCardClick" prefHeight="159.0" prefWidth="259.0" styleClass="pdf-tools-cards">
+                                             <children>
+                                                <ImageView cache="true" fitHeight="48.0" fitWidth="48.0" layoutX="21.0" layoutY="25.0" pickOnBounds="true" preserveRatio="true" AnchorPane.leftAnchor="16.0">
+                                                   <image>
+                                                      <Image url="@images/encrypt_64px.png" />
+                                                   </image>
+                                                </ImageView>
+                                                <Label layoutX="89.0" layoutY="28.0" prefHeight="46.0" prefWidth="113.0" text="Encrypt" textFill="WHITE" wrapText="true">
+                                                   <font>
+                                                      <Font name="Segoe UI Bold" size="16.0" />
+                                                   </font>
+                                                </Label>
+                                                <Label layoutX="64.0" layoutY="86.0" prefHeight="62.0" prefWidth="155.0" text="Encrypt Pdf with various security options" textFill="WHITE" wrapText="true">
+                                                   <font>
+                                                      <Font size="14.0" />
+                                                   </font>
+                                                </Label>
+                                             </children>
+                                          </AnchorPane>
+                                          <AnchorPane layoutX="35.0" layoutY="403.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onMouseClicked="#handleDecryptionCardClick" prefHeight="159.0" prefWidth="259.0" styleClass="pdf-tools-cards">
+                                             <children>
+                                                <ImageView cache="true" fitHeight="48.0" fitWidth="48.0" layoutX="21.0" layoutY="25.0" pickOnBounds="true" preserveRatio="true" AnchorPane.leftAnchor="16.0">
+                                                   <image>
+                                                      <Image url="@images/decrypt_64px.png" />
+                                                   </image>
+                                                </ImageView>
+                                                <Label layoutX="89.0" layoutY="28.0" prefHeight="46.0" prefWidth="113.0" text="Decrypt" textFill="WHITE" wrapText="true">
+                                                   <font>
+                                                      <Font name="Segoe UI Bold" size="16.0" />
+                                                   </font>
+                                                </Label>
+                                                <Label layoutX="64.0" layoutY="86.0" prefHeight="62.0" prefWidth="155.0" text="Removes all the access permissions" textFill="WHITE" wrapText="true">
+                                                   <font>
+                                                      <Font size="14.0" />
+                                                   </font>
+                                                </Label>
+                                             </children>
+                                          </AnchorPane>
+                                          <AnchorPane layoutX="344.0" layoutY="403.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onMouseClicked="#handleExtractImagesCardClick" prefHeight="159.0" prefWidth="259.0" styleClass="pdf-tools-cards">
+                                             <children>
+                                                <ImageView cache="true" fitHeight="48.0" fitWidth="48.0" layoutX="21.0" layoutY="25.0" pickOnBounds="true" preserveRatio="true" AnchorPane.leftAnchor="16.0">
+                                                   <image>
+                                                      <Image url="@images/pdf-to-image_64px.png" />
+                                                   </image>
+                                                </ImageView>
+                                                <Label layoutX="89.0" layoutY="25.0" prefHeight="46.0" prefWidth="113.0" text="Extract Images" textFill="WHITE" wrapText="true">
+                                                   <font>
+                                                      <Font name="Segoe UI Bold" size="16.0" />
+                                                   </font>
+                                                </Label>
+                                                <Label layoutX="64.0" layoutY="86.0" prefHeight="62.0" prefWidth="155.0" text="Extracts images from Pdf Documents" textFill="WHITE" wrapText="true">
+                                                   <font>
+                                                      <Font size="14.0" />
+                                                   </font>
+                                                </Label>
+                                             </children>
+                                          </AnchorPane>
+                                                </children>
+                                                <padding>
+                                                    <Insets left="25.0" top="25.0" />
+                                                </padding>
+                                            </FlowPane>
+                                 </children>
+                                 <VBox.margin>
+                                    <Insets />
+                                 </VBox.margin>
+                              </HBox>
+                                  </children>
+                              </VBox>
+                          </content>
+                      </ScrollPane>
+                  </children>
+              </VBox>
+          </center>
+      </BorderPane>
+   </children>
+</StackPane>

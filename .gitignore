@@ -1,0 +1,15 @@
+!.mvn/wrapper/maven-wrapper.jar
+!**/src/main/**/target/
+!**/src/test/**/target/
+
+### IntelliJ IDEA ###
+.idea/
+*.iws
+*.iml
+*.ipr
+
+### Project ###
+ui/target/
+pdf/target/
+utilities/target/
+ui/src/main/resources/fxml/Exp/

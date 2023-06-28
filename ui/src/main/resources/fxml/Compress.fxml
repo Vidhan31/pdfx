@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.String?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.CheckBox?>
+<?import javafx.scene.control.DialogPane?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ListView?>
+<?import javafx.scene.control.RadioButton?>
+<?import javafx.scene.control.ToggleGroup?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Region?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+<DialogPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="380.0" prefWidth="540.0" stylesheets="@css/NoPaddingDialogPane.css" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.pdfx.pdf.compress.CompressController">
+   <content>
+      <VBox prefHeight="200.0" prefWidth="100.0">
+         <children>
+            <HBox prefHeight="242.0" VBox.vgrow="ALWAYS">
+               <children>
+                  <VBox fx:id="vbox" maxHeight="1.7976931348623157E308" HBox.hgrow="ALWAYS">
+                     <children>
+                        <ListView fx:id="listView" maxHeight="1.7976931348623157E308" styleClass="bordered" VBox.vgrow="ALWAYS" />
+                     </children>
+                  </VBox>
+               </children>
+            </HBox>
+            <HBox prefHeight="25.0" VBox.vgrow="ALWAYS">
+               <children>
+                  <Label maxHeight="1.7976931348623157E308" text="Optimize for">
+                     <HBox.margin>
+                        <Insets left="50.0" />
+                     </HBox.margin>
+                  </Label>
+                  <RadioButton fx:id="speedRadio" maxHeight="1.7976931348623157E308" mnemonicParsing="false" text="Speed">
+                     <HBox.margin>
+                        <Insets left="50.0" />
+                     </HBox.margin>
+                     <toggleGroup>
+                        <ToggleGroup fx:id="optimizeGroup" />
+                     </toggleGroup>
+                  </RadioButton>
+                  <RadioButton fx:id="sizeRadio" mnemonicParsing="false" text="Size" toggleGroup="$optimizeGroup">
+                     <HBox.margin>
+                        <Insets left="50.0" />
+                     </HBox.margin>
+                  </RadioButton>
+                  <RadioButton fx:id="defaultRadio" maxHeight="1.7976931348623157E308" mnemonicParsing="false" selected="true" text="Default" toggleGroup="$optimizeGroup">
+                     <HBox.margin>
+                        <Insets left="50.0" />
+                     </HBox.margin>
+                  </RadioButton>
+               </children>
+               <VBox.margin>
+                  <Insets bottom="20.0" top="10.0" />
+               </VBox.margin>
+            </HBox>
+            <HBox prefHeight="30.0" VBox.vgrow="ALWAYS">
+               <children>
+                  <CheckBox fx:id="separatelyCheckBox" maxHeight="1.7976931348623157E308" mnemonicParsing="false" text="Compress files individually" wrapText="true">
+                     <HBox.margin>
+                        <Insets />
+                     </HBox.margin>
+                  </CheckBox>
+                  <Button maxHeight="1.7976931348623157E308" mnemonicParsing="false" onAction="#handleCompressButton" text="Compress">
+                     <styleClass>
+                        <String fx:value="accent" />
+                        <String fx:value="outlined" />
+                     </styleClass>
+                     <HBox.margin>
+                        <Insets left="25.0" />
+                     </HBox.margin></Button>
+               </children>
+               <VBox.margin>
+                  <Insets bottom="10.0" />
+               </VBox.margin>
+            </HBox>
+         </children>
+      </VBox>
+   </content>
+   <header>
+      <HBox>
+         <children>
+            <Region maxHeight="1.7976931348623157E308" HBox.hgrow="ALWAYS" />
+            <Label maxHeight="1.7976931348623157E308" text="Compress" HBox.hgrow="ALWAYS">
+               <font>
+                  <Font name="System Bold" size="24.0" />
+               </font>
+               <padding>
+                  <Insets top="5.0" />
+               </padding>
+            </Label>
+            <Region maxHeight="1.7976931348623157E308" HBox.hgrow="ALWAYS" />
+         </children>
+      </HBox>
+   </header>
+</DialogPane>

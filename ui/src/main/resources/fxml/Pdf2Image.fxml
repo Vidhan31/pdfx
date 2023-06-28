@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.DialogPane?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.RadioButton?>
+<?import javafx.scene.control.ToggleGroup?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+<?import org.kordamp.ikonli.javafx.FontIcon?>
+
+<DialogPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="200.0" prefWidth="400.0" stylesheets="@css/NoPaddingDialogPane.css" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.pdfx.pdf.pdf2Image.Pdf2ImageController">
+    <header>
+        <HBox>
+            <children>
+                <AnchorPane prefHeight="64.0" prefWidth="401.0" HBox.hgrow="ALWAYS">
+                    <children>
+                        <Label layoutX="104.0" layoutY="17.0" text="Select Image Format">
+                            <font>
+                                <Font name="System Bold" size="20.0" />
+                            </font>
+                        </Label>
+                    </children>
+                </AnchorPane>
+            </children>
+        </HBox>
+    </header>
+   <content>
+      <VBox prefHeight="200.0" prefWidth="100.0">
+         <children>
+            <HBox VBox.vgrow="ALWAYS">
+               <children>
+                  <Label text="Image Quality">
+                     <HBox.margin>
+                        <Insets left="6.0" />
+                     </HBox.margin>
+                  </Label>
+                  <RadioButton fx:id="defaultRadio" mnemonicParsing="false" selected="true" text="Default">
+                     <HBox.margin>
+                        <Insets left="25.0" />
+                     </HBox.margin>
+                     <toggleGroup>
+                        <ToggleGroup fx:id="quality" />
+                     </toggleGroup>
+                  </RadioButton>
+                  <RadioButton fx:id="highRadio" mnemonicParsing="false" text="High" toggleGroup="$quality">
+                     <HBox.margin>
+                        <Insets left="20.0" />
+                     </HBox.margin>
+                  </RadioButton>
+                  <RadioButton fx:id="lowRadio" mnemonicParsing="false" text="Low" toggleGroup="$quality">
+                     <HBox.margin>
+                        <Insets left="20.0" />
+                     </HBox.margin>
+                  </RadioButton>
+               </children>
+            </HBox>
+            <HBox VBox.vgrow="ALWAYS">
+               <children>
+                  <ComboBox fx:id="outputFormatComboBox" prefHeight="20.0" prefWidth="218.0" promptText="Image format">
+                     <HBox.margin>
+                        <Insets left="6.0" />
+                     </HBox.margin>
+                  </ComboBox>
+                  <Button mnemonicParsing="false" onAction="#handleConvertButtonClick" prefHeight="31.0" prefWidth="112.0" styleClass="accent" text="Convert">
+                     <HBox.margin>
+                        <Insets left="20.0" />
+                     </HBox.margin>
+                     <graphic>
+                        <FontIcon iconLiteral="fltral-image-24" />
+                     </graphic>
+                  </Button>
+               </children>
+            </HBox>
+         </children>
+      </VBox>
+   </content>
+</DialogPane>

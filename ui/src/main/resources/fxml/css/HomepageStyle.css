@@ -1,0 +1,22 @@
+#select-files-pane {
+
+    -fx-border-color: #5262c0;
+    -fx-border-style: dashed;
+    -fx-background-color: #0d2833;
+    -fx-border-radius: 15 15 15 15;
+    -fx-background-radius: 15 15 15 15;
+
+}
+
+.pdf-tools-cards {
+
+    -fx-background-color: #0d2833;
+    -fx-background-radius: 20;
+    -fx-border-radius: 20;
+    -fx-cursor: hand;
+}
+
+.pdf-tools-cards:hover {
+
+    -fx-background-color: #59646e;
+}
