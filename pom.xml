@@ -4,11 +4,11 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
-    <groupId>com.filesmania</groupId>
-    <artifactId>filesmania-desktop</artifactId>
+    <groupId>com.pdfx</groupId>
+    <artifactId>pdfx-desktop</artifactId>
     <version>1.0-SNAPSHOT</version>
     <packaging>pom</packaging>
-    <name>FilesMania</name>
+    <name>PdFX</name>
     <modules>
         <module>utilities</module>
         <module>ui</module>
@@ -136,7 +136,7 @@
                         <id>default-cli</id>
                         <configuration>
                             <mainClass>
-                                com.filesmania.desktop/com.pdfx.Main
+                                com.pdfx.desktop/com.pdfx.Main
                             </mainClass>
                             <launcher>app</launcher>
                             <jlinkZipName>app</jlinkZipName>
