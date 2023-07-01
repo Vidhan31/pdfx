@@ -81,7 +81,7 @@ public class MetadataController {
             protected BufferedImage call() {
 
                 try {
-                    return PdfPreviews.generateSinglePDFPreview(files.get(0), 198, 241);
+                    return PdfPreviews.generateSinglePDFPreview(files.get(0), 205, 241);
                 } catch (EncryptedFileException e) {
                     e.printStackTrace();
                     CustomAlerts.alert("Cannot read file", "PDF file is encrypted", "Decrypt them and then select", ERROR);

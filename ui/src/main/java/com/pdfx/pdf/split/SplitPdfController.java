@@ -74,7 +74,7 @@ public class SplitPdfController {
                 try {
                     List<File> files = FilesManagement.getFileListByType(FileType.PDF).orElseThrow();
                     PdfPreviews pdfPreviews = new PdfPreviews(files);
-                    return pdfPreviews.generateAllPagesPDFPreviews(198, 241);
+                    return pdfPreviews.generateAllPagesPDFPreviews(200, 245);
 
                 } catch (InterruptedException | ExecutionException e) {
                     e.printStackTrace();
