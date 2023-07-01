@@ -71,7 +71,7 @@ public class SelectionView {
             region1.setLayoutY(10.0);
             HBox.setHgrow(region1, Priority.ALWAYS);
 
-            Label label = new Label(String.valueOf(i));
+            Label label = new Label(String.valueOf(i + 1));
             HBox.setHgrow(label, Priority.ALWAYS);
             labelHbox.getChildren().addAll(region1, label);
 
@@ -86,12 +86,22 @@ public class SelectionView {
 
             checkBox.selectedProperty().addListener((observable, oldValue, newValue) -> {
 
-                if (newValue)
-                    selections.add(label.getText());
-                else
-                    selections.remove(label.getText());
+                try {
 
-                System.out.println(selections);
+                    if (newValue)
+                        selections.add(String.valueOf(Integer.parseInt(label.getText()) - 1));
+                    else
+                        selections.remove(String.valueOf(Integer.parseInt(label.getText()) - 1));
+
+                } catch (NumberFormatException e) {
+
+                    e.printStackTrace();
+
+                    if (newValue)
+                        selections.add(label.getText());
+                    else
+                        selections.remove(label.getText());
+                }
             });
         }
     }
