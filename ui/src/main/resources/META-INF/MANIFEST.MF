@@ -1,0 +1,10 @@
+Manifest-Version: 1.0
+Main-Class: com.pdfx.Launcher
+Class-Path: fontbox-2.0.28.jar javafx-controls-20.0.1.jar javafx-fxml-20
+ .0.1-win.jar javafx-base-20.0.1.jar commons-io-2.12.0.jar ikonli-fluent
+ ui-pack-12.3.1.jar javafx-controls-20.0.1-win.jar ikonli-core-12.3.1.ja
+ r javafx-base-20.0.1-win.jar ikonli-javafx-12.3.1.jar javafx-graphics-2
+ 0.0.1-win.jar commons-logging-1.2.jar PDFLayoutTextStripper-2.2.3.jar j
+ avafx-graphics-20.0.1.jar pdfbox-2.0.28.jar javafx-fxml-20.0.1.jar xmpb
+ ox-2.0.28.jar preflight-2.0.28.jar
+

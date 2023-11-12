@@ -13,3 +13,4 @@ ui/target/
 pdf/target/
 utilities/target/
 ui/src/main/resources/fxml/Exp/
+/out/
