@@ -1,12 +1,5 @@
 # Convert, Extract, Split, Merge and perform many other PDF operations
 
-## Tech Stack
-
-- Java
-- JavaFX
-- FXML
-- CSS
-
 ## Screenshots
 
 ![complprogress.png](screenshots%2Fcomplprogress.png)
@@ -31,7 +24,6 @@
 
 - Apache Commons IO
 - Apache PDFBox
-- JavaFX
 - Ikonli Fonts
 - CSS Themes by AtlantaFX
 
@@ -41,13 +33,13 @@ While the project may work with old versions with workarounds, but for smooth sa
 
 - Java 17+
 - JavaFX 20+
-- Scenebuilder
 - Maven
-- Intellij IDE
 
-## Build the project
+## Run
 
-- Execute `mvn compile` command.
+- Extract zip from releases page.
+- Make sure you have Java 17 installed and setup.
+- Click on pdfx jar to run application.
 
 ## License
 
