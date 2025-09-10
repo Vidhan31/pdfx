@@ -21,7 +21,7 @@
 
 <StackPane xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.pdfx.home.HomePageController">
    <children>
-      <BorderPane fx:id="borderPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="800.0" prefWidth="1280.0" stylesheets="@css/HomepageStyle.css" style="-fx-background-color: #f8fafc;">
+      <BorderPane fx:id="borderPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="800.0" prefWidth="1280.0" stylesheets="@css/HomepageStyle.css,@css/ModernTypography.css" style="-fx-background-color: #f8fafc;">
           <right>
 
     </right>
@@ -111,21 +111,21 @@
                                       </HBox>
                               <HBox VBox.vgrow="ALWAYS">
                                  <children>
-                                            <FlowPane hgap="50.0" prefHeight="200.0" prefWidth="200.0" vgap="25.0" HBox.hgrow="ALWAYS">
+                                            <FlowPane hgap="32.0" prefHeight="200.0" prefWidth="200.0" vgap="32.0" HBox.hgrow="ALWAYS">
                                                 <children>
-                                                    <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onMouseClicked="#handleSplitPdfCardClick" prefHeight="159.0" prefWidth="259.0" styleClass="pdf-tools-cards">
+                                                    <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onMouseClicked="#handleSplitPdfCardClick" prefHeight="180.0" prefWidth="280.0" styleClass="pdf-tools-cards">
                                                         <children>
                                                             <ImageView cache="true" fitHeight="45.0" fitWidth="48.0" layoutX="21.0" layoutY="25.0" pickOnBounds="true" preserveRatio="true" AnchorPane.leftAnchor="16.0">
                                                                 <image>
                                                                     <Image url="@images/split_64px.png" />
                                                                 </image>
                                                             </ImageView>
-                                                            <Label layoutX="88.0" layoutY="40.0" text="Split" textFill="WHITE">
+                                                            <Label layoutX="88.0" layoutY="40.0" text="Split" styleClass="card-title">
                                                                 <font>
                                                                     <Font name="Segoe UI Bold" size="16.0" />
                                                                 </font>
                                                             </Label>
-                                                            <Label layoutX="64.0" layoutY="86.0" prefHeight="41.0" prefWidth="154.0" text="Split or Extract range of Pdf Documents" textFill="WHITE" wrapText="true">
+                                                            <Label layoutX="64.0" layoutY="86.0" prefHeight="41.0" prefWidth="154.0" text="Split or Extract range of Pdf Documents" styleClass="card-description" wrapText="true">
                                                                 <font>
                                                                     <Font size="14.0" />
                                                                 </font>
@@ -135,19 +135,19 @@
                                                             <Cursor fx:constant="HAND" />
                                                         </cursor>
                                                     </AnchorPane>
-                                                    <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onMouseClicked="#handleMetadataCardClick" prefHeight="159.0" prefWidth="259.0" styleClass="pdf-tools-cards">
+                                                    <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onMouseClicked="#handleMetadataCardClick" prefHeight="180.0" prefWidth="280.0" styleClass="pdf-tools-cards">
                                                         <children>
                                                             <ImageView cache="true" fitHeight="48.0" fitWidth="48.0" layoutX="21.0" layoutY="25.0" pickOnBounds="true" preserveRatio="true" AnchorPane.leftAnchor="16.0">
                                                                 <image>
                                                                     <Image url="@images/file-info_64px.png" />
                                                                 </image>
                                                             </ImageView>
-                                                            <Label layoutX="87.0" layoutY="28.0" prefHeight="44.0" prefWidth="146.0" text="View and Edit Metadata" textFill="WHITE" wrapText="true">
+                                                            <Label layoutX="87.0" layoutY="28.0" prefHeight="44.0" prefWidth="146.0" text="View and Edit Metadata" styleClass="card-title" wrapText="true">
                                                                 <font>
                                                                     <Font name="Segoe UI Bold" size="16.0" />
                                                                 </font>
                                                             </Label>
-                                                            <Label layoutX="64.0" layoutY="86.0" prefHeight="62.0" prefWidth="155.0" text="Includes author, subject, date, pages, etc" textFill="WHITE" wrapText="true">
+                                                            <Label layoutX="64.0" layoutY="86.0" prefHeight="62.0" prefWidth="155.0" text="Includes author, subject, date, pages, etc" styleClass="card-description" wrapText="true">
                                                                 <font>
                                                                     <Font size="14.0" />
                                                                 </font>
@@ -157,38 +157,38 @@
                                                             <Cursor fx:constant="HAND" />
                                                         </cursor>
                                                     </AnchorPane>
-                                                    <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onMouseClicked="#handleExtractTextCardClick" prefHeight="159.0" prefWidth="259.0" styleClass="pdf-tools-cards">
+                                                    <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onMouseClicked="#handleExtractTextCardClick" prefHeight="180.0" prefWidth="280.0" styleClass="pdf-tools-cards">
                                                         <children>
                                                             <ImageView cache="true" fitHeight="48.0" fitWidth="48.0" layoutX="21.0" layoutY="25.0" pickOnBounds="true" preserveRatio="true" AnchorPane.leftAnchor="16.0">
                                                                 <image>
                                                                     <Image url="@images/text_64px.png" />
                                                                 </image>
                                                             </ImageView>
-                                                            <Label layoutX="88.0" layoutY="29.0" prefHeight="41.0" prefWidth="114.0" text="Extract Text" textFill="WHITE" wrapText="true">
+                                                            <Label layoutX="88.0" layoutY="29.0" prefHeight="41.0" prefWidth="114.0" text="Extract Text" styleClass="card-title" wrapText="true">
                                                                 <font>
                                                                     <Font name="Segoe UI Bold" size="16.0" />
                                                                 </font>
                                                             </Label>
-                                                            <Label layoutX="64.0" layoutY="86.0" prefHeight="41.0" prefWidth="133.0" text="Extract text from Pdf Documents" textFill="WHITE" wrapText="true">
+                                                            <Label layoutX="64.0" layoutY="86.0" prefHeight="41.0" prefWidth="133.0" text="Extract text from Pdf Documents" styleClass="card-description" wrapText="true">
                                                                 <font>
                                                                     <Font size="14.0" />
                                                                 </font>
                                                             </Label>
                                                         </children>
                                                     </AnchorPane>
-                                                    <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onMouseClicked="#handleMergePdfCardClick" prefHeight="159.0" prefWidth="259.0" styleClass="pdf-tools-cards">
+                                                    <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onMouseClicked="#handleMergePdfCardClick" prefHeight="180.0" prefWidth="280.0" styleClass="pdf-tools-cards">
                                                         <children>
                                                             <ImageView cache="true" fitHeight="48.0" fitWidth="48.0" layoutX="21.0" layoutY="25.0" pickOnBounds="true" preserveRatio="true" AnchorPane.leftAnchor="16.0">
                                                                 <image>
                                                                     <Image url="@images/merge-pdf_64px.png" />
                                                                 </image>
                                                             </ImageView>
-                                                            <Label layoutX="89.0" layoutY="28.0" prefHeight="43.0" prefWidth="144.0" text="Merge" textFill="WHITE" wrapText="true">
+                                                            <Label layoutX="89.0" layoutY="28.0" prefHeight="43.0" prefWidth="144.0" text="Merge" styleClass="card-title" wrapText="true">
                                                                 <font>
                                                                     <Font name="Segoe UI Bold" size="16.0" />
                                                                 </font>
                                                             </Label>
-                                                            <Label layoutX="64.0" layoutY="86.0" prefHeight="41.0" prefWidth="149.0" text="Merge two or more Pdf Documents" textFill="WHITE" wrapText="true">
+                                                            <Label layoutX="64.0" layoutY="86.0" prefHeight="41.0" prefWidth="149.0" text="Merge two or more Pdf Documents" styleClass="card-description" wrapText="true">
                                                                 <font>
                                                                     <Font size="14.0" />
                                                                 </font>
@@ -198,19 +198,19 @@
                                                             <Cursor fx:constant="HAND" />
                                                         </cursor>
                                                     </AnchorPane>
-                                                    <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onMouseClicked="#handleCompressCardClick" prefHeight="159.0" prefWidth="259.0" styleClass="pdf-tools-cards">
+                                                    <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onMouseClicked="#handleCompressCardClick" prefHeight="180.0" prefWidth="280.0" styleClass="pdf-tools-cards">
                                                         <children>
                                                             <ImageView cache="true" fitHeight="48.0" fitWidth="48.0" layoutX="21.0" layoutY="25.0" pickOnBounds="true" preserveRatio="true" AnchorPane.leftAnchor="16.0">
                                                                 <image>
                                                                     <Image url="@images/zip_64px.png" />
                                                                 </image>
                                                             </ImageView>
-                                                            <Label layoutX="88.0" layoutY="29.0" prefHeight="40.0" prefWidth="119.0" text="Zip" textFill="WHITE" wrapText="true">
+                                                            <Label layoutX="88.0" layoutY="29.0" prefHeight="40.0" prefWidth="119.0" text="Zip" styleClass="card-title" wrapText="true">
                                                                 <font>
                                                                     <Font name="Segoe UI Bold" size="16.0" />
                                                                 </font>
                                                             </Label>
-                                                            <Label layoutX="64.0" layoutY="86.0" prefHeight="41.0" prefWidth="148.0" text="Compress Pdf Files in a .zip format" textFill="WHITE" wrapText="true">
+                                                            <Label layoutX="64.0" layoutY="86.0" prefHeight="41.0" prefWidth="148.0" text="Compress Pdf Files in a .zip format" styleClass="card-description" wrapText="true">
                                                                 <font>
                                                                     <Font size="14.0" />
                                                                 </font>
@@ -220,76 +220,76 @@
                                                             <Cursor fx:constant="HAND" />
                                                         </cursor>
                                                     </AnchorPane>
-                                                    <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onMouseClicked="#handlePdfToImageCardClick" prefHeight="159.0" prefWidth="259.0" styleClass="pdf-tools-cards">
+                                                    <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onMouseClicked="#handlePdfToImageCardClick" prefHeight="180.0" prefWidth="280.0" styleClass="pdf-tools-cards">
                                                         <children>
                                                             <ImageView cache="true" fitHeight="48.0" fitWidth="48.0" layoutX="21.0" layoutY="25.0" pickOnBounds="true" preserveRatio="true" AnchorPane.leftAnchor="16.0">
                                                                 <image>
                                                                     <Image url="@images/pdf-to-image_64px.png" />
                                                                 </image>
                                                             </ImageView>
-                                                            <Label layoutX="89.0" layoutY="28.0" prefHeight="46.0" prefWidth="113.0" text="Convert to Image" textFill="WHITE" wrapText="true">
+                                                            <Label layoutX="89.0" layoutY="28.0" prefHeight="46.0" prefWidth="113.0" text="Convert to Image" styleClass="card-title" wrapText="true">
                                                                 <font>
                                                                     <Font name="Segoe UI Bold" size="16.0" />
                                                                 </font>
                                                             </Label>
-                                                            <Label layoutX="64.0" layoutY="86.0" prefHeight="41.0" prefWidth="130.0" text="Convert Pdf into Jpg Jpeg &amp; Png formats" textFill="WHITE" wrapText="true">
+                                                            <Label layoutX="64.0" layoutY="86.0" prefHeight="41.0" prefWidth="130.0" text="Convert Pdf into Jpg Jpeg &amp; Png formats" styleClass="card-description" wrapText="true">
                                                                 <font>
                                                                     <Font size="14.0" />
                                                                 </font>
                                                             </Label>
                                                         </children>
                                                     </AnchorPane>
-                                          <AnchorPane layoutX="653.0" layoutY="219.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onMouseClicked="#handleEncryptionCardClick" prefHeight="159.0" prefWidth="259.0" styleClass="pdf-tools-cards">
+                                          <AnchorPane layoutX="653.0" layoutY="219.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onMouseClicked="#handleEncryptionCardClick" prefHeight="180.0" prefWidth="280.0" styleClass="pdf-tools-cards">
                                              <children>
                                                 <ImageView cache="true" fitHeight="48.0" fitWidth="48.0" layoutX="21.0" layoutY="25.0" pickOnBounds="true" preserveRatio="true" AnchorPane.leftAnchor="16.0">
                                                    <image>
                                                       <Image url="@images/encrypt_64px.png" />
                                                    </image>
                                                 </ImageView>
-                                                <Label layoutX="89.0" layoutY="28.0" prefHeight="46.0" prefWidth="113.0" text="Encrypt" textFill="WHITE" wrapText="true">
+                                                <Label layoutX="89.0" layoutY="28.0" prefHeight="46.0" prefWidth="113.0" text="Encrypt" styleClass="card-title" wrapText="true">
                                                    <font>
                                                       <Font name="Segoe UI Bold" size="16.0" />
                                                    </font>
                                                 </Label>
-                                                <Label layoutX="64.0" layoutY="86.0" prefHeight="62.0" prefWidth="155.0" text="Encrypt Pdf with various security options" textFill="WHITE" wrapText="true">
+                                                <Label layoutX="64.0" layoutY="86.0" prefHeight="62.0" prefWidth="155.0" text="Encrypt Pdf with various security options" styleClass="card-description" wrapText="true">
                                                    <font>
                                                       <Font size="14.0" />
                                                    </font>
                                                 </Label>
                                              </children>
                                           </AnchorPane>
-                                          <AnchorPane layoutX="35.0" layoutY="403.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onMouseClicked="#handleDecryptionCardClick" prefHeight="159.0" prefWidth="259.0" styleClass="pdf-tools-cards">
+                                          <AnchorPane layoutX="35.0" layoutY="403.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onMouseClicked="#handleDecryptionCardClick" prefHeight="180.0" prefWidth="280.0" styleClass="pdf-tools-cards">
                                              <children>
                                                 <ImageView cache="true" fitHeight="48.0" fitWidth="48.0" layoutX="21.0" layoutY="25.0" pickOnBounds="true" preserveRatio="true" AnchorPane.leftAnchor="16.0">
                                                    <image>
                                                       <Image url="@images/decrypt_64px.png" />
                                                    </image>
                                                 </ImageView>
-                                                <Label layoutX="89.0" layoutY="28.0" prefHeight="46.0" prefWidth="113.0" text="Decrypt" textFill="WHITE" wrapText="true">
+                                                <Label layoutX="89.0" layoutY="28.0" prefHeight="46.0" prefWidth="113.0" text="Decrypt" styleClass="card-title" wrapText="true">
                                                    <font>
                                                       <Font name="Segoe UI Bold" size="16.0" />
                                                    </font>
                                                 </Label>
-                                                <Label layoutX="64.0" layoutY="86.0" prefHeight="62.0" prefWidth="155.0" text="Removes all the access permissions" textFill="WHITE" wrapText="true">
+                                                <Label layoutX="64.0" layoutY="86.0" prefHeight="62.0" prefWidth="155.0" text="Removes all the access permissions" styleClass="card-description" wrapText="true">
                                                    <font>
                                                       <Font size="14.0" />
                                                    </font>
                                                 </Label>
                                              </children>
                                           </AnchorPane>
-                                          <AnchorPane layoutX="344.0" layoutY="403.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onMouseClicked="#handleExtractImagesCardClick" prefHeight="159.0" prefWidth="259.0" styleClass="pdf-tools-cards">
+                                          <AnchorPane layoutX="344.0" layoutY="403.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onMouseClicked="#handleExtractImagesCardClick" prefHeight="180.0" prefWidth="280.0" styleClass="pdf-tools-cards">
                                              <children>
                                                 <ImageView cache="true" fitHeight="48.0" fitWidth="48.0" layoutX="21.0" layoutY="25.0" pickOnBounds="true" preserveRatio="true" AnchorPane.leftAnchor="16.0">
                                                    <image>
                                                       <Image url="@images/pdf-to-image_64px.png" />
                                                    </image>
                                                 </ImageView>
-                                                <Label layoutX="89.0" layoutY="25.0" prefHeight="46.0" prefWidth="113.0" text="Extract Images" textFill="WHITE" wrapText="true">
+                                                <Label layoutX="89.0" layoutY="25.0" prefHeight="46.0" prefWidth="113.0" text="Extract Images" styleClass="card-title" wrapText="true">
                                                    <font>
                                                       <Font name="Segoe UI Bold" size="16.0" />
                                                    </font>
                                                 </Label>
-                                                <Label layoutX="64.0" layoutY="86.0" prefHeight="62.0" prefWidth="155.0" text="Extracts images from Pdf Documents" textFill="WHITE" wrapText="true">
+                                                <Label layoutX="64.0" layoutY="86.0" prefHeight="62.0" prefWidth="155.0" text="Extracts images from Pdf Documents" styleClass="card-description" wrapText="true">
                                                    <font>
                                                       <Font size="14.0" />
                                                    </font>

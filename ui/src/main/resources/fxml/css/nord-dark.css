@@ -423,11 +423,40 @@ Text {
   -color-button-shadow: -color-shadow-default;
   -fx-background-color: -color-button-border, -color-button-bg;
   -fx-background-insets: 0, 1px;
-  -fx-background-radius: 1, 0px;
+  -fx-background-radius: 6px, 5px;
   -fx-graphic-text-gap: 6px;
   -fx-text-fill: -color-button-fg;
   -fx-alignment: CENTER;
-  -fx-padding: 8px 12px 8px 12px;
+  -fx-padding: 10px 16px;
+  -fx-font-weight: 500;
+  -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.15), 3, 0.6, 0, 1);
+}
+
+/* Modern accent button styling for dark theme */
+.button.accent {
+  -fx-background-color: -color-accent-emphasis;
+  -fx-background-radius: 8px;
+  -fx-text-fill: -color-fg-emphasis;
+  -fx-padding: 12px 20px;
+  -fx-font-weight: 600;
+  -fx-effect: dropshadow(gaussian, rgba(94, 129, 172, 0.4), 4, 0.6, 0, 2);
+}
+
+.button.accent:hover {
+  -fx-background-color: -color-accent-fg;
+  -fx-effect: dropshadow(gaussian, rgba(94, 129, 172, 0.5), 6, 0.7, 0, 3);
+  -fx-translate-y: -1px;
+}
+
+.button.accent:pressed {
+  -fx-background-color: #476283;
+  -fx-translate-y: 0;
+  -fx-effect: dropshadow(gaussian, rgba(94, 129, 172, 0.25), 2, 0.4, 0, 1);
+}
+
+/* Rounded button variant */
+.button.rounded {
+  -fx-background-radius: 12px;
 }
 .button .font-icon, .button .ikonli-font-icon {
   -fx-icon-color: -color-button-fg;
