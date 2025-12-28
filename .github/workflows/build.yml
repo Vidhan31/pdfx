@@ -4,7 +4,7 @@ on:
   push:
     branches: [ main, master ]
     tags:
-      - 'v*'
+      - "v*"
   pull_request:
     branches: [ main, master ]
   workflow_dispatch:
@@ -20,10 +20,10 @@ jobs:
       - name: Set up Liberica JDK 25 Full (includes JavaFX)
         uses: actions/setup-java@v4
         with:
-          java-version: '25'
-          distribution: 'liberica'
-          java-package: 'jdk+fx'
-          cache: 'maven'
+          java-version: "25"
+          distribution: "liberica"
+          java-package: "jdk+fx"
+          cache: "maven"
 
       - name: Verify Java setup
         run: |
@@ -60,22 +60,29 @@ jobs:
     needs: build-windows
     runs-on: ubuntu-latest
     if: startsWith(github.ref, 'refs/tags/v')
+    permissions:
+      contents: write
 
     steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
       - name: Download artifact
         uses: actions/download-artifact@v4
         with:
           name: PdFX-Windows-x64
-          path: PdFX-Windows-x64
+          path: PdFX
 
-      - name: Create ZIP archive
+      - name: Verify and create ZIP archive
         run: |
-          # Create a parent directory to contain the files
-          mkdir PdFX
-          # Move downloaded contents into the folder
-          mv PdFX-Windows-x64/* PdFX/
-          # Zip the folder, not just the contents
-          zip -r PdFX-Windows-x64.zip PdFX
+          echo "📦 Contents of downloaded artifact:"
+          ls -la PdFX/
+
+          echo "🔨 Creating ZIP archive..."
+          zip -r PdFX-Windows-x64.zip PdFX/
+
+          echo "✅ ZIP archive created:"
+          ls -lh PdFX-Windows-x64.zip
 
       - name: Create GitHub Release
         uses: softprops/action-gh-release@v2
@@ -84,6 +91,13 @@ jobs:
           generate_release_notes: true
           draft: false
           prerelease: ${{ contains(github.ref, '-beta') || contains(github.ref, '-alpha') || contains(github.ref, '-rc') }}
+          body: |
+            ## 🎉 PdFX Release ${{ github.ref_name }}
+
+            ### 📥 Download
+            Download the ZIP file below and extract it to your desired location. Run `pdfx.exe` to start the application.            
+            ### 📋 System Requirements
+            - Windows 10 or later (64-bit)
+            - No Java installation required (bundled JRE included)
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-
