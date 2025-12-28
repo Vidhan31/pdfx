@@ -1,0 +1,89 @@
+name: Build Windows Executable
+
+on:
+  push:
+    branches: [ main, master ]
+    tags:
+      - 'v*'
+  pull_request:
+    branches: [ main, master ]
+  workflow_dispatch:
+
+jobs:
+  build-windows:
+    runs-on: windows-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Set up Liberica JDK 25 Full (includes JavaFX)
+        uses: actions/setup-java@v4
+        with:
+          java-version: '25'
+          distribution: 'liberica'
+          java-package: 'jdk+fx'
+          cache: 'maven'
+
+      - name: Verify Java setup
+        run: |
+          java -version
+          jpackage --version
+          Write-Host "JAVA_HOME: $env:JAVA_HOME"
+
+      - name: Build with Maven
+        run: mvn clean install -B -DskipTests --no-transfer-progress
+
+      - name: Verify build output
+        run: |
+          $exePath = "ui\target\dist\PdFX\pdfx.exe"
+          if (Test-Path $exePath) {
+            Write-Host "✅ Build successful! Executable found at: $exePath"
+            $fileInfo = Get-Item $exePath
+            Write-Host "File size: $($fileInfo.Length / 1MB) MB"
+          } else {
+            Write-Host "❌ Build failed! Executable not found."
+            Write-Host "Contents of ui\target:"
+            Get-ChildItem -Path "ui\target" -Recurse | ForEach-Object { Write-Host $_.FullName }
+            exit 1
+          }
+
+      - name: Upload Windows artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: PdFX-Windows-x64
+          path: ui/target/dist/PdFX/
+          retention-days: 30
+          if-no-files-found: error
+
+  release:
+    needs: build-windows
+    runs-on: ubuntu-latest
+    if: startsWith(github.ref, 'refs/tags/v')
+
+    steps:
+      - name: Download artifact
+        uses: actions/download-artifact@v4
+        with:
+          name: PdFX-Windows-x64
+          path: PdFX-Windows-x64
+
+      - name: Create ZIP archive
+        run: |
+          # Create a parent directory to contain the files
+          mkdir PdFX
+          # Move downloaded contents into the folder
+          mv PdFX-Windows-x64/* PdFX/
+          # Zip the folder, not just the contents
+          zip -r PdFX-Windows-x64.zip PdFX
+
+      - name: Create GitHub Release
+        uses: softprops/action-gh-release@v2
+        with:
+          files: PdFX-Windows-x64.zip
+          generate_release_notes: true
+          draft: false
+          prerelease: ${{ contains(github.ref, '-beta') || contains(github.ref, '-alpha') || contains(github.ref, '-rc') }}
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+

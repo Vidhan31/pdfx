@@ -6,14 +6,14 @@
     <parent>
         <groupId>com.pdfx</groupId>
         <artifactId>pdfx-desktop</artifactId>
-        <version>1.0-SNAPSHOT</version>
+        <version>1.0.0</version>
     </parent>
 
     <artifactId>ui</artifactId>
 
     <properties>
-        <maven.compiler.source>21</maven.compiler.source>
-        <maven.compiler.target>21</maven.compiler.target>
+        <maven.compiler.source>25</maven.compiler.source>
+        <maven.compiler.target>25</maven.compiler.target>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     </properties>
 
@@ -33,13 +33,13 @@
         <dependency>
             <groupId>com.pdfx</groupId>
             <artifactId>utilities</artifactId>
-            <version>1.0-SNAPSHOT</version>
+            <version>1.0.0</version>
             <scope>compile</scope>
         </dependency>
         <dependency>
             <groupId>com.pdfx</groupId>
             <artifactId>pdf</artifactId>
-            <version>1.0-SNAPSHOT</version>
+            <version>1.0.0</version>
             <scope>compile</scope>
         </dependency>
     </dependencies>
@@ -123,6 +123,18 @@
                                 <argument>
                                     java.base,java.desktop,java.logging,java.management,java.prefs,java.scripting,java.xml,jdk.unsupported,javafx.controls,javafx.fxml,javafx.graphics,javafx.swing
                                 </argument>
+
+                                <argument>--app-version</argument>
+                                <argument>1.0.0</argument>
+
+                                <argument>--vendor</argument>
+                                <argument>Vidhan</argument>
+
+                                <argument>--description</argument>
+                                <argument>PDF Operations - Convert, Extract, Split, Merge, Encrypt and more</argument>
+
+                                <argument>--copyright</argument>
+                                <argument>Copyright 2025 Vidhan. Licensed under Apache License 2.0</argument>
 
                             </arguments>
                         </configuration>

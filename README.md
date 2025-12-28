@@ -1,4 +1,16 @@
-# Convert, Extract, Split, Merge and perform many other PDF operations
+# PdFX - PDF Operations Desktop Application
+
+Convert, Extract, Split, Merge, Encrypt, Decrypt and perform many other PDF operations.
+
+## Features
+
+- **Merge** multiple PDF files into one
+- **Split** PDF files by page ranges
+- **Extract** text and images from PDFs
+- **Convert** PDF to images
+- **Encrypt/Decrypt** PDF files with password protection
+- **Compress** PDF files to reduce size
+- **Edit Metadata** of PDF files
 
 ## Screenshots
 
@@ -29,17 +41,31 @@
 
 ## Requirements
 
-While the project may work with old versions with workarounds, but for smooth sailing I personally use and recommend:
+For development:
+- JDK 25 (Liberica JDK with JavaFX recommended)
+- Maven 3.8+
 
-- Java 17+
-- JavaFX 20+
-- Maven
+For running the application:
+- No external dependencies needed - the application is bundled with its own runtime
+
+## Build
+
+```bash
+mvn clean install
+```
+
+The executable will be created at `ui/target/dist/PdFX/pdfx.exe`
 
 ## Run
 
-- Extract zip from releases page.
-- Make sure you have Java 17 installed and setup.
-- Click on pdfx jar to run application.
+### From Release
+- Download and extract the zip from the [Releases](https://github.com/Vidhan31/pdfx/releases) page
+- Run `pdfx.exe`
+
+### From Source
+```bash
+mvn clean javafx:run
+```
 
 ## License
 
