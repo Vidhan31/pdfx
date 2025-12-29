@@ -32,7 +32,9 @@ jobs:
           Write-Host "JAVA_HOME: $env:JAVA_HOME"
 
       - name: Build with Maven
-        run: mvn clean install -B -DskipTests --no-transfer-progress "-Dpackage.type=app-image"
+        run: mvn clean install -B -DskipTests --no-transfer-progress "-Dpackage.type=app-image" "-Djava.net.preferIPv4Stack=true"
+        env:
+          MAVEN_OPTS: "-Djava.net.preferIPv4Stack=true"
 
       - name: Verify build output
         run: |
