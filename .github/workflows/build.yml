@@ -32,7 +32,7 @@ jobs:
           Write-Host "JAVA_HOME: $env:JAVA_HOME"
 
       - name: Build with Maven
-        run: mvn clean install -B -DskipTests --no-transfer-progress -Dpackage.type=app-image
+        run: mvn clean install -B -DskipTests --no-transfer-progress "-Dpackage.type=app-image"
 
       - name: Verify build output
         run: |
