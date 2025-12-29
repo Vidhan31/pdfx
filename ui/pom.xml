@@ -15,6 +15,7 @@
         <maven.compiler.source>25</maven.compiler.source>
         <maven.compiler.target>25</maven.compiler.target>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <package.type>app-image</package.type>
     </properties>
 
     <dependencies>
@@ -102,7 +103,7 @@
                             <workingDirectory>${project.build.directory}</workingDirectory>
                             <arguments>
                                 <argument>--type</argument>
-                                <argument>app-image</argument>
+                                <argument>${package.type}</argument>
 
                                 <argument>--name</argument>
                                 <argument>PdFX</argument>
