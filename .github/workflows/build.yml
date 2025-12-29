@@ -1,12 +1,9 @@
-name: Build Windows Executable
+name: Build and Release
 
 on:
   push:
-    branches: [ main, master ]
     tags:
       - "v*"
-  pull_request:
-    branches: [ main, master ]
   workflow_dispatch:
 
 permissions:
@@ -59,8 +56,178 @@ jobs:
           retention-days: 30
           if-no-files-found: error
 
+  build-linux-x64:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        package-type: [deb, rpm]
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Install RPM tools (for .rpm builds)
+        if: matrix.package-type == 'rpm'
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y rpm
+
+      - name: Set up Liberica JDK 25 Full (includes JavaFX)
+        uses: actions/setup-java@v4
+        with:
+          java-version: "25"
+          distribution: "liberica"
+          java-package: "jdk+fx"
+          cache: "maven"
+
+      - name: Verify Java setup
+        run: |
+          java -version
+          jpackage --version
+          echo "JAVA_HOME: $JAVA_HOME"
+
+      - name: Build with Maven
+        run: mvn clean install -B -DskipTests --no-transfer-progress -Dpackage.type=${{ matrix.package-type }}
+
+      - name: Verify build output
+        run: |
+          echo "📦 Contents of ui/target/dist:"
+          ls -la ui/target/dist/ || echo "dist folder not found"
+          
+          if [ "${{ matrix.package-type }}" == "deb" ]; then
+            DEB_FILE=$(find ui/target/dist -name "*.deb" 2>/dev/null | head -1)
+            if [ -n "$DEB_FILE" ]; then
+              echo "✅ Build successful! DEB package found at: $DEB_FILE"
+              ls -lh "$DEB_FILE"
+            else
+              echo "❌ Build failed! DEB package not found."
+              find ui/target -type f -name "*.deb" 2>/dev/null || echo "No .deb files found anywhere"
+              exit 1
+            fi
+          else
+            RPM_FILE=$(find ui/target/dist -name "*.rpm" 2>/dev/null | head -1)
+            if [ -n "$RPM_FILE" ]; then
+              echo "✅ Build successful! RPM package found at: $RPM_FILE"
+              ls -lh "$RPM_FILE"
+            else
+              echo "❌ Build failed! RPM package not found."
+              find ui/target -type f -name "*.rpm" 2>/dev/null || echo "No .rpm files found anywhere"
+              exit 1
+            fi
+          fi
+
+      - name: Upload DEB artifact
+        if: matrix.package-type == 'deb'
+        uses: actions/upload-artifact@v4
+        with:
+          name: PdFX-Linux-x64-deb
+          path: ui/target/dist/*.deb
+          retention-days: 30
+          if-no-files-found: error
+
+      - name: Upload RPM artifact
+        if: matrix.package-type == 'rpm'
+        uses: actions/upload-artifact@v4
+        with:
+          name: PdFX-Linux-x64-rpm
+          path: ui/target/dist/*.rpm
+          retention-days: 30
+          if-no-files-found: error
+
+  build-linux-x86:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        package-type: [deb, rpm]
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Set up multiarch support
+        run: |
+          sudo dpkg --add-architecture i386
+          sudo apt-get update
+
+      - name: Install RPM tools (for .rpm builds)
+        if: matrix.package-type == 'rpm'
+        run: |
+          sudo apt-get install -y rpm
+
+      - name: Install 32-bit libraries
+        run: |
+          sudo apt-get install -y \
+            libc6:i386 \
+            libstdc++6:i386 \
+            zlib1g:i386
+
+      - name: Set up Liberica JDK 25 Full x86
+        run: |
+          # Download Liberica JDK 25 for x86 (32-bit)
+          curl -L -o liberica-jdk.tar.gz \
+            "https://download.bell-sw.com/java/25/bellsoft-jdk25-linux-i586-full.tar.gz"
+          
+          mkdir -p $HOME/jdk-x86
+          tar -xzf liberica-jdk.tar.gz -C $HOME/jdk-x86 --strip-components=1
+          
+          echo "JAVA_HOME=$HOME/jdk-x86" >> $GITHUB_ENV
+          echo "$HOME/jdk-x86/bin" >> $GITHUB_PATH
+
+      - name: Verify Java setup
+        run: |
+          java -version
+          jpackage --version
+          echo "JAVA_HOME: $JAVA_HOME"
+          file $JAVA_HOME/bin/java
+
+      - name: Build with Maven
+        run: mvn clean install -B -DskipTests --no-transfer-progress -Dpackage.type=${{ matrix.package-type }}
+
+      - name: Verify build output
+        run: |
+          echo "📦 Contents of ui/target/dist:"
+          ls -la ui/target/dist/ || echo "dist folder not found"
+          
+          if [ "${{ matrix.package-type }}" == "deb" ]; then
+            DEB_FILE=$(find ui/target/dist -name "*.deb" 2>/dev/null | head -1)
+            if [ -n "$DEB_FILE" ]; then
+              echo "✅ Build successful! DEB package found at: $DEB_FILE"
+              ls -lh "$DEB_FILE"
+            else
+              echo "❌ Build failed! DEB package not found."
+              exit 1
+            fi
+          else
+            RPM_FILE=$(find ui/target/dist -name "*.rpm" 2>/dev/null | head -1)
+            if [ -n "$RPM_FILE" ]; then
+              echo "✅ Build successful! RPM package found at: $RPM_FILE"
+              ls -lh "$RPM_FILE"
+            else
+              echo "❌ Build failed! RPM package not found."
+              exit 1
+            fi
+          fi
+
+      - name: Upload DEB artifact (x86)
+        if: matrix.package-type == 'deb'
+        uses: actions/upload-artifact@v4
+        with:
+          name: PdFX-Linux-x86-deb
+          path: ui/target/dist/*.deb
+          retention-days: 30
+          if-no-files-found: error
+
+      - name: Upload RPM artifact (x86)
+        if: matrix.package-type == 'rpm'
+        uses: actions/upload-artifact@v4
+        with:
+          name: PdFX-Linux-x86-rpm
+          path: ui/target/dist/*.rpm
+          retention-days: 30
+          if-no-files-found: error
+
   release:
-    needs: build-windows
+    needs: [build-windows, build-linux-x64, build-linux-x86]
     runs-on: ubuntu-latest
     if: startsWith(github.ref, 'refs/tags/v')
     permissions:
@@ -70,37 +237,91 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v4
 
-      - name: Download artifact
+      - name: Download all artifacts
         uses: actions/download-artifact@v4
         with:
-          name: PdFX-Windows-x64
-          path: PdFX
+          path: artifacts
 
-      - name: Verify and create ZIP archive
+      - name: Prepare release files
         run: |
-          echo "📦 Contents of downloaded artifact:"
-          ls -la PdFX/
-
-          echo "🔨 Creating ZIP archive..."
-          zip -r PdFX-Windows-x64.zip PdFX/
-
-          echo "✅ ZIP archive created:"
-          ls -lh PdFX-Windows-x64.zip
+          echo "📦 Downloaded artifacts:"
+          find artifacts -type f \( -name "*.deb" -o -name "*.rpm" -o -name "*.exe" \) | while read file; do
+            echo "Found: $file"
+          done
+          
+          mkdir -p release
+          
+          # Windows x64
+          if [ -d "artifacts/PdFX-Windows-x64" ]; then
+            echo "🔨 Creating Windows ZIP archive..."
+            cd artifacts/PdFX-Windows-x64
+            zip -r ../../release/PdFX-${{ github.ref_name }}-Windows-x64.zip .
+            cd ../..
+          fi
+          
+          # Linux x64 packages
+          if ls artifacts/PdFX-Linux-x64-deb/*.deb 1> /dev/null 2>&1; then
+            cp artifacts/PdFX-Linux-x64-deb/*.deb release/pdfx-${{ github.ref_name }}-linux-x64.deb
+          fi
+          
+          if ls artifacts/PdFX-Linux-x64-rpm/*.rpm 1> /dev/null 2>&1; then
+            cp artifacts/PdFX-Linux-x64-rpm/*.rpm release/pdfx-${{ github.ref_name }}-linux-x64.rpm
+          fi
+          
+          # Linux x86 packages
+          if ls artifacts/PdFX-Linux-x86-deb/*.deb 1> /dev/null 2>&1; then
+            cp artifacts/PdFX-Linux-x86-deb/*.deb release/pdfx-${{ github.ref_name }}-linux-x86.deb
+          fi
+          
+          if ls artifacts/PdFX-Linux-x86-rpm/*.rpm 1> /dev/null 2>&1; then
+            cp artifacts/PdFX-Linux-x86-rpm/*.rpm release/pdfx-${{ github.ref_name }}-linux-x86.rpm
+          fi
+          
+          echo "📦 Release files:"
+          ls -lh release/
 
       - name: Create GitHub Release
         uses: softprops/action-gh-release@v2
         with:
-          files: PdFX-Windows-x64.zip
+          files: release/*
           generate_release_notes: true
           draft: false
           prerelease: ${{ contains(github.ref, '-beta') || contains(github.ref, '-alpha') || contains(github.ref, '-rc') }}
           body: |
             ## 🎉 PdFX Release ${{ github.ref_name }}
-
-            ### 📥 Download
-            Download the ZIP file below and extract it to your desired location. Run `pdfx.exe` to start the application.            
-            ### 📋 System Requirements
-            - Windows 10 or later (64-bit)
-            - No Java installation required (bundled JRE included)
+            
+            ### Available Downloads
+            
+            | Platform | Architecture | Package |
+            |----------|--------------|---------|
+            | 🪟 Windows | x64 (64-bit) | `.zip` |
+            | 🐧 Linux | x64 (64-bit) | `.deb`, `.rpm` |
+            | 🐧 Linux | x86 (32-bit) | `.deb`, `.rpm` |
+            
+            ### Installation
+            
+            **Windows:**
+            1. Download and extract the ZIP file
+            2. Run `pdfx.exe`
+            
+            **Debian/Ubuntu (x64):**
+            ```bash
+            sudo dpkg -i pdfx-${{ github.ref_name }}-linux-x64.deb
+            ```
+            
+            **Debian/Ubuntu (x86):**
+            ```bash
+            sudo dpkg -i pdfx-${{ github.ref_name }}-linux-x86.deb
+            ```
+            
+            **Fedora/RHEL/CentOS (x64):**
+            ```bash
+            sudo rpm -i pdfx-${{ github.ref_name }}-linux-x64.rpm
+            ```
+            
+            **Fedora/RHEL/CentOS (x86):**
+            ```bash
+            sudo rpm -i pdfx-${{ github.ref_name }}-linux-x86.rpm
+            ```
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
